@@ -1,94 +1,91 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
+
+import './App.css'
+
+ function Userform(props) {
+  const [userRegistration, seUserRegistration] = useState({
+    name: "",
+    age: "",
+    email: "",
+    password: "",
+    cpassword: ""
+
+  });
+  const [records, setRecords] = useState([])
+  const handleChange = (e) => {
+    // const name = e.target.name;
+    // const value = e.target.value;
+    const { name, value } = e.target;
+    const new_value = (name === "email") ? value.toLowerCase() : value;
+    seUserRegistration((prev) => {
+      return {
+        ...prev, [name]: new_value
+
+      }
+    })
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const newRecord = { ...userRegistration, id: new Date().getTime().toString }
+    // console.log(newRecord)
+    setRecords([...records, newRecord]);
+    seUserRegistration({ name: "", email: "" ,password: "",cpassword: ""});
+    //removal
+    // let store(newRecord);
+     props.data(newRecord)
 
 
+  }
 
- function Userform() {
-
-  // const [fullName, setfullName] = useState({
-  //   userName: "",
-  //   userAge: "",
-  //   userEmail: "",
-  // });
-  // const [records, setRecords] = useState([])  
-
-  // const onSubmits = (e) => {
-  //   e.preventDefault()
  
-   
-  // setRecords([...records]);
-  //   const checkEmailDuplicate = records.filter((emailDup) => {
-  //           return emailDup.userEmail === fullName.userEmail;
-  //         });
-  //         const newData = (data) => [...data,fullName];
-  //         checkEmailDuplicate.length > 0
-  //           ? alert("email already exist")
-  //           : setRecords(newData);
-  //   setfullName({ userName: "", userAge: "",userEmail: ""});
-  //   console.log(newData)
-  // }
-  
-  // const inputEvent = (event) => {
-  
-  //   const {name, value  } = event.target;
-   
-  //   setfullName((prevalue) => {
-  //     if (name === "userName") {
-  //       return {
-  //         userName: value,
-  //         userAge: prevalue.userAge,
-  //         userEmail: prevalue.userEmail,
-  //       };
-  //     }
-  //     else if (name === "userAge") {
-  //       return {
-  //         userName: prevalue.userName,
-  //         userAge: value,
-  //         userEmail: prevalue.userEmail,
-
-  //       }
-  //     }
-  //     else if (name === "userEmail") {
-  //       const new_value = (name === "userEmail") ? value.toLowerCase() : value;
-  //       return {
-  //         userName: prevalue.userName,
-  //         userAge: prevalue.userAge,
-  //         userEmail: value,
-  //         ...prevalue, [name]: new_value,
-          
-  //       }
-  //     }
-
-  //   });
-  // }
   return (
     <>
     <div className="container">
-         <form action="" id="form" className="form">
-            <h2></h2>
+    <h2> {}</h2>
+         <form action="" id="form" onSubmit={handleSubmit} className="form">
+           
             <div className="form-control">
-                <label for="userName">UserName</label>
-                <input type="text" id="username" placeholder="Enter UserName"/>
+                <label>UserName</label>
+                <input type="text" id="username" name='name' value={userRegistration.name} onChange={handleChange} placeholder="Enter UserName"/>
                 <small>Error massage</small>
             </div>
             <div className="form-control">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter Email"/>
+                <label>Email</label>
+                <input type="text" id="email" name='email' value={userRegistration.email} onChange={handleChange} placeholder="Enter Email"/>
                 <small>Error massage</small>
             </div>
             <div className="form-control">
-                <label for="psassword">Password</label>
-                <input type="password" id="password" placeholder="Enter Password"/>
+                <label>Password</label>
+                <input type="password" id="password" name='password' value={userRegistration.password} onChange={handleChange} placeholder="Enter Password"/>
                 <small>Error massage</small>
             </div>
             <div className="form-control">
-                <label for="psassword">Conform Password</label>
-                <input type="password" id="password2" placeholder="Enter Password"/>
+                <label>Conform Password</label>
+                <input type="password" id="password2" name='cpassword' value={userRegistration.cpassword} onChange={handleChange} placeholder="Enter Password"/>
                 <small>Error massage</small>
             </div>
             <button>SignUp</button>
         
            
          </form>
+         {/* <div className="allrecodrs">
+          {
+            records.map((curElem) => {
+              const {id, name,email,password,cpassword } = curElem;
+              return (
+                <ol className="showallrecords" key={id}>
+                  <li>
+                    <span>{name}</span>
+                    <span>{email}</span>
+                    <span>{password}</span>
+                    <span>{cpassword}</span>
+                  </li>
+                </ol>
+              )
+            })
+          }
+        </div> */}
 
         
     </div>
@@ -96,8 +93,6 @@
    
         </>
   )
-
-
 };
 
 export default Userform
