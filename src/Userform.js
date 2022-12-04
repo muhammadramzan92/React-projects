@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-
-import './App.css'
-
+import { BrowserRouter as Router, Route, Routes ,Link, useNavigate} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Login from "./Login";
+import './App.css';
  function Userform(props) {
   const [userRegistration, seUserRegistration] = useState({
     name: "",
-    age: "",
     email: "",
     password: "",
     cpassword: ""
 
   });
+  const navigate = useNavigate();
   const [records, setRecords] = useState([])
   const handleChange = (e) => {
     // const name = e.target.name;
@@ -27,20 +28,20 @@ import './App.css'
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newRecord = { ...userRegistration, id: new Date().getTime().toString }
-    // console.log(newRecord)
+    const newRecord = { ...userRegistration}
+    console.log(newRecord)
     setRecords([...records, newRecord]);
     seUserRegistration({ name: "", email: "" ,password: "",cpassword: ""});
-    //removal
-    // let store(newRecord);
-     props.data(newRecord)
-
-
+    
+    props.getDataFromSignUp(newRecord);
+    navigate("/");
   }
 
  
   return (
     <>
+            {/* <Link to="/"><button>Logout</button></Link>   */}
+
     <div className="container">
     <h2> {}</h2>
          <form action="" id="form" onSubmit={handleSubmit} className="form">
@@ -65,7 +66,10 @@ import './App.css'
                 <input type="password" id="password2" name='cpassword' value={userRegistration.cpassword} onChange={handleChange} placeholder="Enter Password"/>
                 <small>Error massage</small>
             </div>
-            <button>SignUp</button>
+            {/* <button>SignUp</button> */}
+            {/* <NavLink to="/">
+              </NavLink> */}
+              <button type="submit">SignUp</button>
         
            
          </form>

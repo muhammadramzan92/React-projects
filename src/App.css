@@ -37,11 +37,11 @@ h2 {
 
 }
 
-.form {
+/* .form {
 
     padding: 30px 40px;
 
-}
+} */
 .form-control{
     margin-bottom: 10px;
     padding-bottom: 2px;
@@ -104,3 +104,70 @@ h2 {
     margin-top: 10px;
 }
  
+
+.main-div {
+    max-width: 1200px;
+    width: 1200px;
+    padding: 40px 0;
+    background: #cccccc26;
+    box-shadow: 0 0 20px 0px #ccc;
+    
+}
+
+.head button {
+    position: absolute;
+    top: 10px;
+    right: 70px;
+    background-color: #002ead;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+    padding:15px;
+    min-height:30px;
+    cursor: pointer;
+    min-width: 120px;
+    transition: linear 0.3s;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.head button:hover {
+    background-color: #0a0a23;
+    transition: linear 0.3s;
+}
+
+.welcome h1.username strong {
+    display: block;
+    font-weight: 600;
+    color: #008000;
+}
+
+.welcome {text-align: center;}
+
+.welcome h1 {
+    font-size: 60px;
+}
+
+.container {
+    padding: 30px 40px;
+}
+
+.goto_singup {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.goto_singup button {
+    background: transparent;
+    border: 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid #cccccc70;
+    padding: 0 0 5px 0;
+    color: #9d9797;
+    cursor: pointer;
+    transition: linear 0.3s;
+}
+.goto_singup button:hover {
+    color: #000;
+    transition: linear 0.3s;
+}

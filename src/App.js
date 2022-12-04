@@ -4,46 +4,45 @@ import { useState } from 'react';
 import Userform from './Userform'
 
 import Login from './Login';
-import { BrowserRouter as Router, Route, Routes ,Link} from "react-router-dom";
-
-
+import Errorpage from './Errorpage'
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Welcome from './Welcome';
 
 function App() {
   const [store, setStore] = useState(null)
-  
-//  const [userdata,setuserdata] = useState();
-//   let store = (data)=>{
-//     setuserdata({
-//       data:data
-//     })
-//   }
-  // userdata.data
+  const getData = (data) => {
+    setStore(data);
+  }
+  const [logindata, setloginData] = useState()
+  const setData = (data) => {
+    setloginData(data);
+  }
+ 
   return (
-<div>
-{/* <Router>
+    <div>
 
-<ul className="App-header">  
-              <li>  
-                <Link to="/Login">Login</Link>  
-              </li>  
-              </ul>  
-            
-           <Routes>
-                 <Route exact path='/Signup' element={<Userform data={setStore}/>}></Route>
-                 <Route exact path='/Login' element={<Login store={store}/>}></Route>
-               
-          </Routes>
-       
-       </Router> */}
+      
+      <Router>
+        <Routes>
+          <Route exact path='/signup' element={<Userform getDataFromSignUp={getData}  />}></Route>
+          <Route path='/' element={<Login  passData={store} getDatalogin={setData}/>}></Route>
+          <Route path='/welcome' element={<Welcome passDatalogin={logindata}/>}></Route>
+          <Route path='*' element={<Errorpage />}></Route>
 
-<Userform data={setStore}/>
-<Login store={store}/> 
- {/* userdata={userdata} */}
+        </Routes>
 
-</div>
-   
-  
+      </Router>
+
+
+    </div>
+
+
   );
 }
 
 export default App;
+
+
+function Error() {
+  return <h2>404, Not found</h2>
+}
