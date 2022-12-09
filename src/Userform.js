@@ -24,17 +24,23 @@ import './App.css';
 
       }
     })
+
+
+
+    dispatch(addUser(userRegistration))
   };
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newRecord = { ...userRegistration}
-    console.log(newRecord)
-    setRecords([...records, newRecord]);
-    seUserRegistration({ name: "", email: "" ,password: "",cpassword: ""});
+    // const newRecord = { ...userRegistration}
+    // console.log(newRecord)
+    // setRecords([...records, newRecord]);
+    // seUserRegistration({ name: "", email: "" ,password: "",cpassword: ""});
     
-    props.getDataFromSignUp(newRecord);
-    navigate("/");
+    // props.getDataFromSignUp(newRecord);
+    // navigate("/");0
+    dispatch(addUser(userRegistration))
+
   }
 
  

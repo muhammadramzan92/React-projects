@@ -7,7 +7,7 @@ export default function Login(props) {
       username: "",
       userpassword: ""
       });
-    // const [logUser, setlogUser] = useState(null);
+   
      const navigateto= useNavigate(); 
     const handleChange = (e) => {
     
@@ -19,28 +19,23 @@ export default function Login(props) {
   
         }
       })
-      // setlogUser({
-      //   username:name,
-      //   userpassword:value,
-      // })
+   
     }
-    // const [records, setRecords] = useState([])
-  
+   
       const handleSubmit1 = (e) => {
-        const formData = new FormData(e.target);
+       
         e.preventDefault()
-        const records = { ...logUser}
-//  setlogUser()
-    //  setRecords([...records]);
-    // setlogUser({ name: "",password: ""});
+       
+
     
     if ((props.passData.name===logUser.username) && (props.passData.password===logUser.userpassword) ){
        
-          props. getDatalogin(logUser==null?'':logUser);
+          props.getDatalogin(logUser==null?'':logUser);
           navigateto('/Welcome')
          }else
          {
-          navigateto('/Errorpage')
+          // navigateto('/Errorpage')
+          alert('Please input correct userName and Password')
          
         }
     
@@ -51,7 +46,7 @@ export default function Login(props) {
             <>
                 <div className="container">
                     <form action="" id="form1" className="form" onSubmit={handleSubmit1}>
-                        <h2></h2>
+                     
                         <div className="form-control">
                             <label>UserName</label>
                             <input type="text" id="username1" name='username' value={logUser.name} onChange={handleChange} placeholder="Enter UserName" />
